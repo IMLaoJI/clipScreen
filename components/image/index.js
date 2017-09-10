@@ -13,15 +13,7 @@ export default class Image extends Component{
   }
   handleClip () {
     let ele = document.getElementById('view')
-    function filter (node) {
-      return (node.tagName !== 'i');
-    }
-    let opt = {
-      height: 360,
-      width: 500,
-    }
-
-    domtoimage.toPng(ele, opt)
+    domtoimage.toPng(ele)
       .then(function (dataUrl) {
           let ele = document.querySelector('.clipShow')
           ele.setAttribute('src', dataUrl)
@@ -38,7 +30,7 @@ export default class Image extends Component{
   }
   render () {
     return (
-      <div>
+      <div className='imageClip' style={{width: 475}} >
         <p className='bg-info'> 使用 domtoimage 实现js截屏效果 </p>
         <figure id='view'>
           <img className='img-thumbnail' src={require('../img/can.jpg')} />
